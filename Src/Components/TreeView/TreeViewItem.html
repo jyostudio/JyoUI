@@ -1,0 +1,12 @@
+<div class="treeViewItem">
+    <div class="frame" data-on-click="ClickItem">
+        <div class="background"></div>
+        <jyo-check-box class="checkbox" data-on-click="ClickCheckbox"></jyo-check-box>
+        <div class="arrow" data-on-click="ClickExpandOrCollapse"></div>
+        <div class="image"></div>
+        <div class="content"></div>
+    </div>
+    <div class="subItems">
+        <slot id="subItemsSlot"></slot>
+    </div>
+</div>

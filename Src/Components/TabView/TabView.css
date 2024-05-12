@@ -1,0 +1,302 @@
+:host([data-theme-mode="Dark"]) {
+    --tab-item-not-active: rgba(255, 255, 255, 0.8);
+    --tab-active: rgba(255, 255, 255, 0.15);
+    --tab-hover: rgba(255, 255, 255, 0.2);
+    --tab-split-bar: rgba(255, 255, 255, 0.1);
+    --btn-hover: rgba(255, 255, 255, 0.1);
+}
+
+:host([data-theme-mode="Light"]) {
+    --tab-item-not-active: rgba(0, 0, 0, 0.8);
+    --tab-active: rgba(255, 255, 255, 0.7);
+    --tab-hover: rgba(0, 0, 0, 0.05);
+    --tab-split-bar: rgba(0, 0, 0, 0.1);
+    --btn-hover: rgba(0, 0, 0, 0.05);
+}
+
+::-webkit-scrollbar {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 0;
+    height: 0;
+    background-color: transparent;
+}
+
+.tabView {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    color: var(--foreground);
+    z-index: 1000001;
+    pointer-events: none;
+}
+
+.tabView > * {
+    pointer-events: auto;
+}
+
+.header {
+    position: relative;
+    --height: 34px;
+    display: flex;
+    width: 100%;
+    height: var(--height);
+    word-break: keep-all;
+    white-space: nowrap;
+}
+
+.header .functionArea {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.header .tabItemsFrame {
+    position: relative;
+    display: flex;
+    flex-wrap: nowrap;
+    flex: 1;
+    font-size: 0;
+    min-width: 0;
+    pointer-events: none;
+    white-space: nowrap;
+    word-break: keep-all;
+    overflow: hidden;
+}
+
+.header .tabItemsFrame .tabItems {
+    display: flex;
+    max-width: 100%;
+    padding-left: 5px;
+    padding-right: 5px;
+    height: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    font-size: 14px;
+    scrollbar-width: none;
+}
+
+.header .tabItemsFrame .tabItems .tabItem {
+    position: relative;
+    margin-top: 4px;
+    height: calc(var(--height) - 4px);
+    padding: 0 5px;
+    width: 240px;
+    max-width: 240px;
+    min-width: 100px;
+    pointer-events: all;
+    margin-left: -5px;
+    margin-right: -5px;
+    color: var(--tab-item-not-active);
+}
+
+.header .tabItemsFrame .tabItems .tabItem:not(.active)::after {
+    content: "";
+    position: absolute;
+    top: 7px;
+    right: 4px;
+    width: 1px;
+    height: 16px;
+    background-color: var(--tab-split-bar);
+}
+
+.header .tabItemsFrame .tabItems .tabItem.hideBar::after,
+.header .tabItemsFrame .tabItems .tabItem:hover::after {
+    display: none;
+}
+
+.header .tabItemsFrame .tabItems .tabItem.active {
+    --color: var(--tab-active);
+    --radius: 6;
+    background-image: paint(jyo-tab-view-item-bg);
+    z-index: 2;
+    color: var(--foreground);
+    font-weight: bold;
+}
+
+.header .tabItemsFrame .tabItems .tabItem:hover:not(.active) {
+    --color: var(--tab-hover);
+    --radius: 6;
+    --small: 1;
+    background-image: paint(jyo-tab-view-item-bg);
+    z-index: 1;
+}
+
+.header .tabItemsFrame .tabItems .tabItem .icon {
+    margin-left: 8px;
+    margin-top: 6px;
+    vertical-align: top;
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    margin-right: 4px;
+    mask-image: var(--background);
+    mask-position: center center;
+    mask-repeat: no-repeat;
+    background-color: var(--foreground);
+}
+
+.header .tabItemsFrame .tabItems .tabItem .title {
+    display: inline-block;
+    height: 100%;
+    line-height: calc(var(--height) - 7px);
+    vertical-align: top;
+    white-space: nowrap;
+    overflow: hidden;
+    width: calc(100% - 72px);
+    font-size: 12px;
+}
+
+.header .tabItemsFrame .tabItems .tabItem.noIconAndClose .title {
+    margin-left: 8px;
+    width: calc(100% - 16px);
+}
+
+.header .tabItemsFrame .tabItems .tabItem.noIcon .title,
+.header .tabItemsFrame .tabItems .tabItem.noClose .title {
+    margin-left: 8px;
+    width: calc(100% - 48px);
+}
+
+.header .tabItemsFrame .tabItems .tabItem .close {
+    position: sticky;
+    top: 50%;
+    transform: translate(0, calc(-50% + 9px));
+    display: inline-block;
+    width: 32px;
+    height: 24px;
+}
+
+.header .tabItemsFrame .tabItems .tabItem .close::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 9px;
+    height: 9px;
+    mask-image: url(./Images/IconClose.png);
+    mask-position: center center;
+    mask-repeat: no-repeat;
+    mask-size: 9px 9px;
+    background-color: var(--foreground);
+}
+
+.header .tabItemsFrame .btn {
+    border-radius: 6px;
+}
+
+.header .tabItemsFrame .btn:hover {
+    background-color: var(--btn-hover);
+}
+
+.header .tabItemsFrame .btnArrow {
+    display: none;
+    flex: 0 0 32px;
+    position: relative;
+    vertical-align: top;
+    margin-top: 8px;
+    width: 32px;
+    height: 24px;
+    pointer-events: all;
+}
+
+.header .tabItemsFrame .btnArrow::before {
+    content: "";
+    position: absolute;
+    width: 6px;
+    height: 8px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    mask-image: url(./Images/Arrow.png);
+    mask-position: center center;
+    mask-repeat: no-repeat;
+    mask-size: 6px 8px;
+    background-color: var(--foreground);
+}
+
+.header .tabItemsFrame .btnArrow.disabled {
+    opacity: 0.5;
+}
+
+.header .tabItemsFrame .btnArrow.disabled:hover {
+    background-color: transparent;
+}
+
+.header .tabItemsFrame .btnArrow.btnArrowLeft {
+    margin-left: 5px;
+    margin-right: 6px;
+    transform: scale(-1, 1);
+}
+
+.header .tabItemsFrame .btnArrow.btnArrowRight {
+    margin-left: 5px;
+    margin-right: 6px;
+}
+
+.header .tabItemsFrame .btnAdd {
+    flex: 0 0 32px;
+    position: relative;
+    vertical-align: top;
+    margin-top: 8px;
+    width: 32px;
+    height: 24px;
+    pointer-events: all;
+}
+
+.header .tabItemsFrame .btnAdd::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 10px;
+    height: 10px;
+    mask-image: url(./Images/Add.png);
+    mask-size: 100% 100%;
+    background-color: var(--foreground);
+}
+
+.header .tabStripHeader,
+.header .tabStripFooter {
+    position: relative;
+    flex-shrink: 1;
+    height: var(--height);
+    line-height: var(--height);
+    vertical-align: middle;
+    padding: 0 4px;
+    pointer-events: all;
+    font-size: 14px;
+}
+
+.content {
+    position: relative;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+    border-top: solid 1px var(--tab-active);
+}
+
+@supports not (background-image: paint(worklet)) {
+    .header .tabItemsFrame .tabItems .tabItem.active,
+    .header .tabItemsFrame .tabItems .tabItem:hover:not(.active) {
+        &::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 5px;
+            width: calc(100% - 10px);
+            height: 100%;
+            border-radius: 6px 6px 0 0;
+            background-color: var(--color);
+            z-index: -1;
+        }
+    }
+}

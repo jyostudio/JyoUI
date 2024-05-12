@@ -1,0 +1,43 @@
+:host([data-theme-mode="Dark"]) {
+    --backgroud-hover: rgba(255, 255, 255, 0.1);
+    --backgroud-active: rgba(255, 255, 255, 0.05);
+}
+
+:host([data-theme-mode="Light"]) {
+    --backgroud-hover: rgba(0, 0, 0, 0.05);
+    --backgroud-active: rgba(0, 0, 0, 0.03);
+}
+
+:host {
+    display: inline-block;
+    margin: 0 4px;
+    height: 32px;
+}
+
+.frame {
+    position: relative;
+    height: 100%;
+    padding: 0 10px;
+    color: var(--foreground);
+    border-radius: 4px;
+}
+
+.frame:hover {
+    background-color: var(--backgroud-hover);
+}
+
+.frame.active,
+.frame:active {
+    background-color: var(--backgroud-active);
+}
+
+.frame .title {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    display: inline-block;
+    white-space: nowrap;
+    word-break: keep-all;
+    overflow: hidden;
+    font-size: 12px;
+}

@@ -1,0 +1,9 @@
+{
+    "compilerOptions": {
+        "allowJs": true,
+        "baseUrl": "./",
+        "paths": {
+            "@JyoUI/*": ["./Src/*"]
+        }
+    }
+}

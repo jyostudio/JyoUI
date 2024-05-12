@@ -1,0 +1,81 @@
+:host([data-theme-mode="Dark"]) {
+    --border-color: rgba(255, 255, 255, 0.5);
+    --hover-color: rgba(255, 255, 255, 0.1);
+}
+
+:host([data-theme-mode="Light"]) {
+    --border-color: rgba(0, 0, 0, 0.5);
+    --hover-color: rgba(0, 0, 0, 0.1);
+}
+
+:host {
+    display: inline-block;
+    vertical-align: bottom;
+}
+
+.frame {
+    font-size: 0;
+    display: flex;
+}
+
+.checkbox {
+    flex: 1 20px 1;
+    display: inline-block;
+    vertical-align: top;
+    position: relative;
+    width: 20px;
+    height: 20px;
+    transition: all 200ms linear;
+    border-radius: 4px;
+    border: solid 1px var(--border-color);
+}
+
+.checkbox i {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 0;
+    height: 18px;
+    mask-image: url(./Images/Selected.png);
+    mask-size: 18px 18px;
+}
+
+.checkbox.three i {
+    mask-image: url(./Images/Three.png);
+}
+
+.checkbox.selected {
+    mask: none;
+    border-color: var(--control-color);
+    background-color: var(--control-color);
+}
+
+.checkbox.selected i {
+    transition: all 300ms linear;
+    width: 18px;
+    background-color: var(--control-foreground);
+}
+
+.frame:hover .checkbox {
+    background-color: var(--hover-color);
+}
+
+.frame:hover .checkbox.selected {
+    border-color: var(--control-active-color);
+    background-color: var(--control-active-color);
+}
+
+.text {
+    flex: 1;
+    display: inline-block;
+    vertical-align: top;
+    margin-left: 5px;
+    font-size: 14px;
+    color: var(--foreground);
+    line-height: 20px;
+    margin-left: 8px;
+}
+
+.text:empty {
+    display: none;
+}

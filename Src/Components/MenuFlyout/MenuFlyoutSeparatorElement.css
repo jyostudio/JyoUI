@@ -1,0 +1,7 @@
+.frame {
+    position: relative;
+    left: -4px;
+    width: calc(100% + 8px);
+    height: 1px;
+    background-color: var(--separator-color);
+}

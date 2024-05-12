@@ -1,0 +1,113 @@
+:host([data-theme-mode="Dark"]) {
+    --backgroud-hover: rgba(255, 255, 255, 0.2);
+    --backgroud-active: rgba(255, 255, 255, 0.1);
+    --arrow-color: #a0a0a0;
+}
+
+:host([data-theme-mode="Light"]) {
+    --backgroud-hover: rgba(0, 0, 0, 0.1);
+    --backgroud-active: rgba(0, 0, 0, 0.05);
+    --arrow-color: #7f7f7f;
+}
+
+.treeViewItem {
+    position: relative;
+    margin: 4px;
+    padding-left: 10px;
+    padding-right: 10px;
+    width: calc(100% - 8px);
+    font-size: 0;
+    white-space: nowrap;
+    word-break: keep-all;
+}
+
+.frame {
+    position: relative;
+    height: 28px;
+}
+
+.background {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 28px;
+    background-color: var(--backgroud-hover);
+    border-radius: 4px;
+}
+
+.frame:hover .background {
+    display: block;
+}
+
+.treeViewItem.selected .background {
+    display: block;
+    background-color: var(--backgroud-active);
+}
+
+.treeViewItem.selected.single .background::before {
+    content: "";
+    position: absolute;
+    top: 18%;
+    left: 0;
+    width: 4px;
+    height: 66%;
+    background-color: var(--control-active-color);
+    border-radius: 4px;
+}
+
+.checkbox {
+    display: inline-block;
+    vertical-align: top;
+    position: relative;
+    top: 50%;
+    transform: translate(0, -50%);
+}
+
+.arrow {
+    display: inline-block;
+    vertical-align: top;
+    position: relative;
+    width: 30px;
+    height: 100%;
+    mask-image: url(./Images/RightArrow.png);
+    mask-size: 4px 6px;
+    mask-repeat: no-repeat;
+    mask-position: center;
+    pointer-events: none;
+}
+
+.treeViewItem.isExpanded .arrow {
+    mask-image: url(./Images/DownArrow.png);
+    mask-size: 6px 4px;
+}
+
+.treeViewItem.hasChildren .arrow {
+    background-color: var(--arrow-color);
+    pointer-events: all;
+}
+
+.image {
+    position: relative;
+    display: inline-block;
+    vertical-align: top;
+    top: 50%;
+    width: 20px;
+    height: 20px;
+    transform: translate(0, -50%);
+    margin-right: 11px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+}
+
+.content {
+    display: inline-block;
+    vertical-align: top;
+    position: relative;
+    top: 50%;
+    transform: translate(0, -50%);
+    font-size: 14px;
+    color: var(--foreground);
+}

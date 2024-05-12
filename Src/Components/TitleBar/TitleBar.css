@@ -1,0 +1,143 @@
+:host([data-theme-mode="Dark"]) {
+    --text-color: rgba(241, 241, 241, 1);
+    --icon-color: rgba(0, 0, 0, 1);
+}
+
+:host([data-theme-mode="Light"]) {
+    --text-color: rgba(30, 30, 30, 1);
+    --icon-color: rgba(255, 255, 255, 1);
+}
+
+* {
+    touch-action: none;
+}
+
+.titleBar {
+    position: relative;
+    display: flex;
+    width: 100%;
+    height: 32px;
+    padding: 1px;
+    white-space: nowrap;
+    overflow: hidden;
+    contain: paint;
+    z-index: 1000000;
+}
+
+.titleBar.max {
+    height: 48px;
+}
+
+.content {
+    position: relative;
+    flex: 1;
+    display: flex;
+    margin-top: -1px;
+    margin-left: -1px;
+    height: calc(100% -1px);
+    font-size: 0;
+    overflow: hidden;
+}
+
+.content .icon {
+    display: none;
+    margin-left: 13px;
+    margin-top: 6px;
+    width: 20px;
+    height: 20px;
+}
+
+.content .title {
+    display: none;
+    flex: 1;
+    padding: 0 6px;
+    margin-top: 8px;
+    font-size: 12px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: var(--text-color);
+    margin-left: 7px;
+}
+
+.content .icon + .title {
+    margin-left: 0;
+}
+
+.functionFrame {
+    position: relative;
+    margin-top: -1px;
+    margin-right: -1px;
+    height: calc(100% -1px);
+    font-size: 0;
+    list-style: none;
+}
+
+.functionFrame .btn {
+    position: relative;
+    display: inline-block;
+    width: 46px;
+    height: 100%;
+    transition: all 200ms linear;
+    will-change: background-color;
+}
+
+.functionFrame .btn:hover {
+    background-color: var(--accent-color);
+}
+
+.functionFrame .btn i {
+    position: absolute;
+    display: block;
+    left: 50%;
+    top: 50%;
+    width: 10px;
+    height: 10px;
+    mask-size: 100%;
+    mask-position: center;
+    transform: translate(-50%, -50%);
+    filter: invert(1);
+    background-color: var(--icon-color);
+}
+
+.functionFrame .btn i.active {
+    background-color: var(--accent-color);
+}
+
+.functionFrame .btnMin i {
+    top: 16px;
+    transform: translate(-50%, 0);
+    height: 1px;
+    mask-image: url(./Images/IconMin.png);
+}
+
+.functionFrame .btnRestore i {
+    mask-image: url(./Images/IconRestore.png);
+}
+
+.functionFrame .btnMax i {
+    mask-image: url(./Images/IconMax.png);
+}
+
+.functionFrame .btnClose i {
+    mask-image: url(./Images/IconClose.png);
+}
+
+.functionFrame .btn:active {
+    transition: all 100ms linear;
+    filter: brightness(0.8);
+}
+
+.functionFrame .btn:active i {
+    margin-top: 1px;
+}
+
+.functionFrame .btn:hover i {
+    filter: none !important;
+    background-color: #fff !important;
+    opacity: 1 !important;
+}
+
+.functionFrame .btnClose:hover {
+    background-color: #c42b1c !important;
+}

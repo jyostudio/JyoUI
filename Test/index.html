@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>测试页面</title>
+        <style>
+            html,
+            body {
+                margin: 0;
+                padding: 0;
+                width: 100%;
+                height: 100%;
+            }
+
+            body {
+                background: url(./Zelda.jpg) no-repeat;
+                background-size: cover;
+                background-position: center;
+                overflow: hidden;
+            }
+
+            :not(:defined) {
+                display: none;
+            }
+        </style>
+        <script type="importmap">
+            {
+                "imports": {
+                    "@JyoUI/": "../Src/"
+                }
+            }
+        </script>
+        <script src="./index.js" type="module"></script>
+    </head>
+
+    <body>
+        <jyo-window size="{width:640,height:480}" location="center">
+            <jyo-menu-flyout>
+                <jyo-menu-flyout-item text="测试"></jyo-menu-flyout-item>
+                <jyo-menu-flyout-separator></jyo-menu-flyout-separator>
+                <jyo-menu-flyout-item text="测试1"></jyo-menu-flyout-item>
+            </jyo-menu-flyout>
+            <jyo-button style="--background: var(--control-color); --foreground: var(--control-foreground)">基础按钮</jyo-button>
+            <br />
+            <br />
+            <jyo-button>基础按钮</jyo-button>
+            <br />
+            <br />
+            <jyo-check-box is-checked="1" is-three-state="true" content="测试三态选框"></jyo-check-box>
+            <br />
+            <br />
+            <jyo-toggle-button content="测试三态按钮" is-three-state="true" is-checked="1"></jyo-toggle-button>
+            <br />
+            <br />
+            <jyo-hyperlink-button content="测试链接按钮" navigate-uri="https://www.baidu.com"></jyo-hyperlink-button>
+            <br />
+            <br />
+            <jyo-symbol-icon symbol="XboxController"></jyo-symbol-icon>
+            <br />
+            <br />
+            <jyo-toggle-switch header="切换状态" off-content="已关闭" on-content="已打开"></jyo-toggle-switch>
+        </jyo-window>
+    </body>
+</html>

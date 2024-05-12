@@ -1,0 +1,18 @@
+{
+    "alwaysShowStatus": true,
+    "eslintIntegration": false,
+    "stylelintIntegration": false,
+    "tslintIntegration": false,
+    "htmlWhitespaceSensitivity": "ignore",
+    "tabWidth": 4,
+    "printWidth": 900,
+    "useTabs": false,
+    "semi": true,
+    "singleQuote": false,
+    "proseWrap": "preserve",
+    "endOfLine": "auto",
+    "trailingComma": "none",
+    "bracketSpacing": true,
+    "jsxBracketSameLine": false,
+    "arrowParens": "avoid"
+}

@@ -1,0 +1,36 @@
+:host([data-theme-mode="Dark"]) {
+    --foreground: #fff;
+    --background: #393939;
+    --border-color: color-mix(in srgb, var(--background) 50%, rgba(255, 255, 255, 0.02));
+    --hover-background-color: color-mix(in srgb, var(--background) 97%, rgba(255, 255, 255, 0.5));
+    --active-background-color: color-mix(in srgb, var(--background) 95%, black);
+    --active-foreground: color-mix(in srgb, var(--foreground) 84%, black);
+}
+
+:host([data-theme-mode="Light"]) {
+    --foreground: #000;
+    --background: rgba(255, 255, 255, 1);
+    --border-color: color-mix(in srgb, var(--background) 50%, rgba(0, 0, 0, 0.5));
+    --hover-background-color: color-mix(in srgb, var(--background) 95%, black);
+    --active-background-color: color-mix(in srgb, var(--background) 92%, black);
+    --active-foreground: color-mix(in srgb, var(--foreground) 70%, rgba(0, 0, 0, 0.1));
+}
+
+:host {
+    display: inline-block;
+    padding: 8px 10px;
+    color: var(--foreground);
+    border-radius: 6px;
+    background-color: var(--background);
+    border: solid 1px var(--border-color);
+    font-size: 12px;
+}
+
+:host(:hover) {
+    background-color: var(--hover-background-color);
+}
+
+:host(:active) {
+    background-color: var(--active-background-color);
+    color: var(--active-foreground);
+}

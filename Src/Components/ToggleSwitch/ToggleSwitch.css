@@ -1,0 +1,114 @@
+:host([data-theme-mode="Dark"]) {
+    --hover-background: rgba(255, 255, 255, 0.1);
+    --checked-hover-background: rgba(0, 0, 0, 0.1);
+    --border-color: #999;
+    --arc-color: #ccc;
+    --hover-arc-color: #cfcfcf;
+    --checked-arc-color: #000;
+}
+
+:host([data-theme-mode="Light"]) {
+    --hover-background: rgba(0, 0, 0, 0.05);
+    --checked-hover-background: rgba(255, 255, 255, 0.1);
+    --border-color: #858585;
+    --arc-color: #5a5a5a;
+    --hover-arc-color: #575757;
+    --checked-arc-color: #fff;
+}
+
+:host {
+    display: inline-block;
+    color: var(--foreground);
+    vertical-align: bottom;
+}
+
+.switch {
+    flex: 1 40px 1;
+    outline: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+    position: relative;
+    width: 38px;
+    height: 18px;
+    border-radius: 10px;
+    border: solid 1px var(--border-color);
+    overflow: hidden;
+    transition: all 0.1s linear;
+    margin: 0;
+    padding: 0;
+}
+
+.switch::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.switch::after {
+    content: "";
+    position: absolute;
+    left: 2px;
+    top: 2px;
+    width: 12px;
+    height: 12px;
+    background-color: var(--arc-color);
+    border-radius: 50%;
+    transition: all 0.1s cubic-bezier(0.93, 0.43, 0.7, 1.05);
+}
+
+.switch:hover::after {
+    transform: scale(1.1);
+    background-color: var(--hover-arc-color);
+}
+
+.switch:hover::before {
+    background-color: var(--hover-background);
+}
+
+.switch:checked {
+    background-color: var(--control-color);
+    border-color: var(--control-color);
+}
+
+.switch:checked::after {
+    left: 21px;
+    background-color: var(--checked-arc-color);
+}
+
+.switch:checked:hover::before {
+    background-color: var(--checked-hover-background);
+}
+
+.switch:active::after {
+    transform: scale(1.2, 1);
+}
+
+.header {
+    font-size: 12px;
+    margin-bottom: 15px;
+}
+
+.frame {
+    font-size: 0;
+    display: flex;
+}
+
+.text {
+    flex: 1;
+    display: inline;
+    font-size: 12px;
+    padding-left: 12px;
+    vertical-align: middle;
+}
+
+.header:empty {
+    display: none;
+}
+
+.text:empty {
+    display: none;
+}

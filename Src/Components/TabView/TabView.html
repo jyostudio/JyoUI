@@ -1,0 +1,18 @@
+<div class="tabView">
+    <div class="header">
+        <div class="functionArea" data-on-pointerdown="SystemMoveHandle" data-on-dblclick="ClickMaxOrRestore"></div>
+        <div class="tabStripHeader">
+            <slot name="tabStripHeader"></slot>
+        </div>
+        <div class="tabItemsFrame">
+            <div class="btn btnArrow btnArrowLeft" data-on-click="ClickArrow" data-move="-100"></div>
+            <div class="tabItems" data-on-mousewheel="ScrollItems"></div>
+            <div class="btn btnArrow btnArrowRight" data-on-click="ClickArrow" data-move="100"></div>
+            <div class="btn btnAdd" data-on-click="ClickAdd"></div>
+        </div>
+        <div class="tabStripFooter">
+            <slot name="tabStripFooter"></slot>
+        </div>
+    </div>
+    <div class="content"></div>
+</div>
