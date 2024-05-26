@@ -797,11 +797,11 @@ export default class Basic extends HTMLElement {
      */
     #CheckParent() {
         if (this.#forceParent) return;
-        this.Parent = null;
+        let newParent = null;
         let parent = this.parentElement;
         while (parent) {
             if (parent?.tagName.indexOf("JYO-") === 0) {
-                this.Parent = parent;
+                newParent = parent;
                 this?.parentElement.addEventListener(
                     "load",
                     () => {
@@ -812,6 +812,9 @@ export default class Basic extends HTMLElement {
                 break;
             }
             parent = parent.parentElement;
+        }
+        if (this.Parent !== newParent) {
+            this.Parent = newParent;
         }
     }
 
